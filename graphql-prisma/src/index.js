@@ -11,7 +11,7 @@ import prisma from './prisma';
 const pubsub = new PubSub();
 
 const server = new GraphQLServer({
-	typeDefs: './src/schema.graphql',
+	typeDefs: './graphql-prisma/src/schema.graphql',
 	resolvers: {
 		Query,
 		Mutation,
@@ -20,10 +20,13 @@ const server = new GraphQLServer({
 		Post,
 		Comment,
 	},
-	context: {
-		db,
-		pubsub,
-		prisma,
+	context(request) {
+		return {
+			db,
+			pubsub,
+			prisma,
+			request,
+		};
 	},
 });
 
