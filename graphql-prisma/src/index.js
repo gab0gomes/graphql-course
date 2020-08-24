@@ -7,7 +7,7 @@ import prisma from './prisma';
 const pubsub = new PubSub();
 
 const server = new GraphQLServer({
-	typeDefs: './graphql-prisma/src/schema.graphql',
+	typeDefs: './src/schema.graphql',
 	resolvers,
 	context(request) {
 		return {

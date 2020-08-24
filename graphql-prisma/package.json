@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./graphql-prisma/dist/index.js",
-    "heroku-postbuild": "babel ./graphql-prisma/src --out-dir ./graphql-prisma/dist --copy-files",
-    "dev": "env-cmd -f ./graphql-prisma/config/dev.env nodemon graphql-prisma/src/index.js --ext js,graphql --exec babel-node",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "get-schema": "graphql get-schema -p prisma --dotenv ./graphql-prisma/config/dev.env"
+    "start": "node ./dist/index.js",
+    "heroku-postbuild": "babel ./src --out-dir ./dist --copy-files",
+    "dev": "env-cmd -f ./config/dev.env nodemon ./src/index.js --ext js,graphql --exec babel-node",
+    "test": "jest",
+    "get-schema": "graphql get-schema -p prisma --dotenv ./config/dev.env"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +25,7 @@
     "prisma-binding": "^2.3.16"
   },
   "devDependencies": {
+    "jest": "^26.4.2",
     "nodemon": "^1.17.5"
   }
 }
