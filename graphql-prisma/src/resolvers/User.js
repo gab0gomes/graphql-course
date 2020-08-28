@@ -1,5 +1,4 @@
 import getUserId from '../utils/getUserId';
-import { Prisma } from 'prisma-binding';
 
 const User = {
 	email: {
@@ -16,7 +15,7 @@ const User = {
 	},
 	posts: {
 		fragment: 'fragment userId on User { id }',
-		resolve(parent, args, { prisma, request }, info) {
+		resolve(parent, args, { prisma }, info) {
 			return prisma.query.posts({
 				where: {
 					published: true,
